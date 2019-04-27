@@ -1,0 +1,20 @@
+#version 130
+
+in vec2 textureCoords;
+
+out vec4 out_Colour;
+
+uniform sampler2D colourTexture;
+uniform sampler2D highlightTexture;
+uniform sampler2D highlightTexture1;
+uniform sampler2D highlightTexture2;
+
+void main(void){
+
+	vec4 sceneColour = texture(colourTexture,textureCoords);
+	vec4 highlightColour = texture(highlightTexture,textureCoords);
+	vec4 highlightColour1 = texture(highlightTexture1,textureCoords);
+	vec4 highlightColour2 = texture(highlightTexture2,textureCoords);
+	out_Colour = sceneColour + (highlightColour + highlightColour1 + highlightColour2) * 3;
+
+}
